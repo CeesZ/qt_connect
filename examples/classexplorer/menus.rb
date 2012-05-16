@@ -1,0 +1,1 @@
+require 'menus/helpmenu'

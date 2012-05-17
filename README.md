@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 qt\_connect
 ==========
 
@@ -255,10 +254,3 @@ published by O'Reilly or [Using JRuby](http://pragprog.com/book/jruby/using-jrub
 Copyright &copy; 2010-2012 Cees Zeelenberg (<c.zeelenberg@computer.org>)  
 This software is released under the LGPL Version 2.1.
 See COPYING.LIB.txt  
-
-=======
-qt_connect
-==========
-
-Qt bindings for JRuby with (optional) extension to provide backward   compatibility with Qt Ruby programs. The API is implemented using Qt Jambi, the   Java version of the Qt framework.  For Qt Ruby programs it provides a QtJambi   inspired interface to the Signals/Slots system without the need to use   C++ signatures.
->>>>>>> b8f6a0afa19a8470516fb9bd3eeb6599c3e663f9

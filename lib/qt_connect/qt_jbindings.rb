@@ -250,7 +250,7 @@ module Qt
                 elsif block.arity == 1
                   block.call(instance)
                 else
-                  raise ArgumentError, "Wrong number of arguments to block(#{block.arity} for 1)"
+                  raise ArgumentError, "Wrong number of arguments to block(#{block.arity} ; should be 1 or 0)"
                 end
               end
               return instance
@@ -634,9 +634,18 @@ QtJambi::QTimer.class_eval {
             #in an uninitialized object unexpected things don't work
             #e.g. it can't process plug-ins like jpeg
             #java_send used to avoid confusion with Ruby initialize constructor
-            def new(args)
+            def new(args,&block)
               java_send(:initialize,[java.lang.String[]],args.to_java(:string))
               $qApp=self
+              if block_given?
+                if block.arity == -1 || block.arity == 0
+                  instance_eval(&block)
+                elsif block.arity == 1
+                  block.call(self)
+                else
+                  raise ArgumentError, "Wrong number of arguments to block(#{block.arity} ; should be 1 or 0)"
+                end
+              end
               return self
             end
             

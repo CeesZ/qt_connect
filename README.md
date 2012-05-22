@@ -42,7 +42,27 @@ can be installed on Ruby and JRuby installations.
 >qtjambi-win32-msvc2008-4.7.1.jar  
 >qt\_connect-1.5.1
 
-**[Mac OS X : NOT TESTED]** ; *please report your experiences*  
+**[Mac OS X]**
+>jruby 1.6.7 [darwin-i386-java]  
+>qtjambi-4.7.0.jar  
+>qtjambi-macosx-gcc-4.7.0.jar  
+>qt\_connect-1.5.1
+
+>>Note: You need to use a 32-bit JVM because the qtjambi binaries are 32-bit only for the moment.
+>>You can do this by opening the "Java Preferences" application and drag the system 32-bit JVM at the top
+>>
+>>You also need to set up the right environment: classpath, java options, ...
+>>You might want to use this script:
+>>
+>> ``` bash
+#!/bin/sh
+QJ=path/to/qtjambi-macosx-community-4.7.0
+export CLASSPATH=$QJ/qtjambi-4.7.0.jar:$QJ/qtjambi-macosx-gcc-4.7.0.jar:.
+export JAVA_OPTS="-XstartOnFirstThread -Djava.library.path=$QJ/lib"
+export QT_PLUGIN_PATH=$QJ/plugins
+JRUBY=path/to/jruby/bin/jruby
+$JRUBY -rubygems $@
+```
 
 **[Linux : ubuntu 11:10]**
 >ruby 1.8.7p352 [x86_64-linux]  

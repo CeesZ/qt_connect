@@ -67,6 +67,7 @@ class ClassExplorer < Qt::MainWindow
     #initial selection: all packages
     @package_list.select_all
     update_class_panel
+	on_package_clicked(0)
 
   end
     
@@ -204,7 +205,8 @@ class ClassExplorer < Qt::MainWindow
 	    size = settings.value("size", Qt::Size.new(1000,768))
       @linkto_box.checked=Qt::Variant.toBoolean(settings.value('linkto_box')) || false
       @inherit_box.checked=Qt::Variant.toBoolean(settings.value('inherit_box')) || false
-      @splitter.sizes=Qt::Variant.toList(settings.value("splitter")) || [200,800]
+      sz=Qt::Variant.toList(settings.value("splitter"))
+	  @splitter.sizes= (sz.size==2) ? sz : [300,700]
       @root=Qt::Variant.toString(settings.value("root")) || "http://doc.trolltech.com/qtjambi-4.4/html"
       state=settings.value("state")
 	    resize(size)
